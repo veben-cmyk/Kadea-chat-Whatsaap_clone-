@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kadea-chat - Connexion</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center bg-gray-100 mx-6">
+
+    <!-- Logo -->
+    <div class="mb-6 items-center justify-center flex flex-col">
+        <button class="bg-blue-600 p-4 rounded-lg">
+            <ion-icon class="text-3xl text-white" name="logo-wechat"></ion-icon>
+        </button>
+    </div>
+
+    <!-- En-tête -->
+    <div class="mb-6 flex flex-col justify-center items-center text-center">
+        <p class="text-2xl text-blue-600 font-medium">Welcome back</p>
+        <p class="text-gray-500 text-sm">Please enter your details to sign in to kadea chat</p>
+    </div>
+
+    <!-- Card -->
+    <div class="w-full max-w-md bg-white p-6 rounded-2xl shadow-lg">
+        <form id="login-form" class="flex flex-col space-y-4">
+        
+            <!-- Email -->
+            <div>
+                <label class="text-sm font-medium text-gray-700" for="login-email">Email</label>
+                <div class="relative flex items-center mt-1">
+                    <ion-icon class="absolute pl-3 text-gray-400" name="mail-outline"></ion-icon>
+                    <input id="login-email" type="email" placeholder="vebe@gmail.com" class="w-full pl-9 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-blue-50/50">
+                </div>
+            </div>
+
+            <!-- Password -->
+            <div>
+                <div class="flex justify-between items-center">
+                    <label class="text-sm font-medium text-gray-700" for="login-password">Password</label> 
+                    <a class="text-blue-600 text-xs hover:underline" href="#">Forgot?</a>
+                </div>
+                <div class="relative flex items-center mt-1">
+                    <ion-icon class="absolute pl-3 text-gray-400" name="lock-closed-outline"></ion-icon>
+                    <input id="login-password" type="password" placeholder="pass123" class="w-full pl-9 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-blue-50/50">
+                </div>
+            </div>
+
+            <!-- Zone d'affichage des messages d'erreur -->
+            <div id="error-message" class="text-red-500 text-xs font-medium transition-all">
+                
+            </div>
+
+            <button type="submit" class="w-full bg-blue-600 text-white py-2.5 rounded-lg hover:bg-blue-700 transition font-medium">
+                Login
+            </button>
+        </form>
+    </div>
+
+    <!-- Redirection Register -->
+    <p class="mt-6 text-sm">
+        <span class="text-gray-500">Don't have an Account?</span> 
+        <a href="register.html" class="text-blue-600 font-medium hover:underline">Create Account</a>
+    </p>
+
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.esm.js"></script> 
+    <script nomodule src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.js"></script>  
+    
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/login.js"></script>
+</body>
+</html>
