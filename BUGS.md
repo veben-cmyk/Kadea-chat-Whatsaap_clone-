@@ -8,6 +8,8 @@ Légende : ✅ Corrigé · 🟡 Connu, non corrigé · 🔍 En cours d'investiga
 
 ## ✅ Corrigés
 
+*(voir commits `fix/minor-bugs` pour l'implémentation)*
+
 ### 1. Casse incorrecte des initiales (`helpers.js`)
 - **Problème** : `obtenirInitiales("alex rivera")` renvoyait `"aR"` au lieu de `"AR"`.
 - **Cause** : seule la 2ème lettre passait par `.toUpperCase()`, pas la 1ère.
@@ -22,13 +24,14 @@ Légende : ✅ Corrigé · 🟡 Connu, non corrigé · 🔍 En cours d'investiga
 
 ---
 
-## 🟡 Connus, non corrigés (à traiter prochainement)
+## ✅ Accepté par design
 
-### 3. Clé API exposée côté client
-- **Problème** : la clé `x-api-key` est écrite en dur dans `login.js`, `register.js`, `profil.js`, `chat.js`. Une fois le repo public, elle est lisible par n'importe qui.
-- **Impact** : risque d'utilisation abusive de la clé par un tiers.
-- **Piste de correction** : passer par un petit backend/proxy qui garde la clé côté serveur, ou (si c'est une clé sandbox pédagogique) documenter clairement qu'elle est publique par design.
-- **Comment l'éviter à l'avenir** : ne jamais committer de clé/secret en dur dans le code front-end ; utiliser des variables d'environnement + un `.env` dans `.gitignore` dès le départ d'un projet.
+### 3. Clé API visible côté client
+- **Constat** : la clé `x-api-key` est écrite en dur dans `login.js`, `register.js`, `profil.js`, `chat.js`.
+- **Statut** : **volontaire** — projet d'exercice (capstone Kadea Academy) utilisant une clé sandbox destinée à être publique dans ce contexte pédagogique. Pas une action requise.
+- **À retenir pour un vrai projet en production** : dans ce cas-là (API réelle, données sensibles), il faudrait passer par un backend/proxy gardant la clé côté serveur, avec des variables d'environnement (`.env` dans `.gitignore`) plutôt que la clé en dur dans le front-end.
+
+## 🟡 Connus, non corrigés (à traiter prochainement)
 
 ### 4. Liens morts : `appel.html` et `archive.html`
 - **Problème** : `chat.html` et `profil.html` pointent vers ces deux pages qui n'existent pas encore.
