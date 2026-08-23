@@ -19,6 +19,19 @@ function afficherToastSucces(message) {
 // ==========================================
 const registerForm = document.getElementById('register-form');
 const errorMessage = document.getElementById('error-message');
+const registerButton = document.getElementById('register-button');
+const registerButtonTexteOriginal = registerButton.textContent;
+
+//fonction pour le chargement en cas d'attente prolongée de la réponse du serveur
+function afficherChargement(texte) {
+    registerButton.disabled = true;
+    registerButton.textContent = texte;
+};
+
+function masquerChargement() {
+    registerButton.disabled = false;
+    registerButton.textContent = registerButtonTexteOriginal;
+};
 
 // ==========================================
 // 2. ÉCOUTE DE LA SOUMISSION DU FORMULAIRE
@@ -57,6 +70,12 @@ async function verifierFormulaire(e) {
         password: passwordValue
     };
 
+    afficherChargement("Inscription en cours...");
+    const timerReveil = setTimeout(() => {
+        afficherChargement("Inscription en cours... (cela prend plus de temps que prévu)");
+    }, 4000);
+
+
     try {
         const reponse = await fetch('https://kadea-chat-api.onrender.com/auth/register', {
             method: 'POST',
@@ -72,6 +91,7 @@ async function verifierFormulaire(e) {
         }
 
         const data = await reponse.json();
+        clearTimeout(timerReveil);
 
         // Succès !
         afficherToastSucces("Inscription réussie !");
@@ -82,6 +102,9 @@ async function verifierFormulaire(e) {
         }, 2000);
 
     } catch (erreur) {
+        clearTimeout(timerReveil);
+        masquerChargement();
+        console.error("Erreur lors de l'inscription :", erreur);
         errorMessage.textContent = "⚠️ " + erreur.message;
     }
 }

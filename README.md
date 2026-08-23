@@ -6,11 +6,11 @@ Kadea Chat est une application de messagerie moderne, minimaliste et sécurisée
 ![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 
-🔗 **[Voir le site en direct](https://quiet-douhua-6984d1.netlify.app/chat.html)**
+🔗 **[Voir le site en direct](https://veben-cmyk.github.io/Kadea-chat-Whatsaap_clone-/)**
 
 ---
 
-## 🚀 Fonctionnalités
+## Fonctionnalités
 
 ✅ **Authentification utilisateur** (Connexion / Inscription)
 ✅ **Gestion sécurisée des sessions** (Stockage du token dans le `localStorage`)
@@ -48,7 +48,7 @@ kadea-chat/
 
 ---
 
-## 🔌 Spécifications techniques & API
+## Spécifications techniques & API
 
 L'application communique avec une API externe en utilisant des requêtes asynchrones (`fetch`).
 
@@ -83,7 +83,7 @@ x-api-key: <API_KEY>
 
 ---
 
-## 🎨 UI / UX & Responsive Design
+##  UI / UX & Responsive Design
 
 - **Stack graphique** : Tailwind CSS pour un design fluide et moderne, Ionicons pour les icônes
 - **Layout** : interface épurée fortement inspirée de WhatsApp
@@ -92,7 +92,7 @@ x-api-key: <API_KEY>
 
 ---
 
-## ⚙️ Installation et configuration
+## Installation et configuration
 
 1. Cloner le projet
    ```bash
@@ -105,7 +105,7 @@ x-api-key: <API_KEY>
 
 ---
 
-## 🌱 Workflow Git (Gitflow)
+## Workflow Git (Gitflow)
 
 | Branche | Rôle |
 |---|---|
@@ -116,11 +116,6 @@ x-api-key: <API_KEY>
 
 Convention de commit : [Conventional Commits](https://www.conventionalcommits.org/) (`feat:`, `fix:`, `docs:`, `style:`...).
 
----
-
-## 🐞 Suivi des bugs
-
-Voir [`BUGS.md`](BUGS.md) pour la liste complète des bugs détectés, corrigés, ou connus — avec les pistes de correction et les bonnes pratiques associées.
 
 ---
 

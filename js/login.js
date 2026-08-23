@@ -19,6 +19,19 @@ function afficherToastSucces(message) {
 // ==========================================
 const loginForm = document.getElementById('login-form');
 const errorMessage = document.getElementById('error-message');
+const loginButton = document.getElementById('login-button');
+const loginButtonTexteOriginal = loginButton.textContent;
+
+//fonction pour le chargement en cas d'attente prolongée de la réponse du serveur
+function afficherChargement(texte) {
+    loginButton.disabled = true;
+    loginButton.textContent = texte;
+};
+
+function masquerChargement() {
+    loginButton.disabled = false;
+    loginButton.textContent = loginButtonTexteOriginal;
+}
 
 // ==========================================
 // 2. ÉCOUTE DE LA SOUMISSION DU FORMULAIRE
@@ -45,6 +58,11 @@ async function verifierLogin(e) {
         password: passwordValue
     };
 
+    afficherChargement("Connexion en cours...");
+    const timerReveil = setTimeout(() => {
+        afficherChargement("Connexion en cours... (cela prend plus de temps que prévu)");
+    }, 4000);
+
     try {
         const reponse = await fetch('https://kadea-chat-api.onrender.com/auth/login', {
             method: 'POST',
@@ -56,6 +74,7 @@ async function verifierLogin(e) {
         });
 
         const data = await reponse.json();
+        clearTimeout(timerReveil);
 
         if (!reponse.ok) {
             throw new Error(data.message || "Email ou mot de passe incorrect.");
@@ -67,6 +86,7 @@ async function verifierLogin(e) {
         if (!token) {
             console.error(" Token introuvable dans la réponse API :", data);
             errorMessage.textContent = "⚠️ Erreur de configuration du serveur (token absent).";
+            masquerChargement();
             return;
         }
 
@@ -83,6 +103,9 @@ async function verifierLogin(e) {
         }, 2000);
 
     } catch (erreur) {
+        masquerChargement();
+        console.error("Erreur lors de la connexion :", erreur);
+        clearTimeout(timerReveil);
         errorMessage.textContent = "⚠️ " + erreur.message;
     }
 }
