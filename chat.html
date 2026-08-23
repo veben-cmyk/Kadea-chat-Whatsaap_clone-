@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kadea-chat</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+        darkMode: 'class'
+        }
+    </script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="flex h-dvh w-full overflow-hidden bg-white text-gray-800 dark:bg-gray-950 dark:text-gray-200">
+
+    <aside class="hidden md:flex md:w-16 h-full bg-gray-50 dark:bg-gray-900 flex-col justify-between items-center py-6 border-r border-gray-200 dark:border-gray-800 flex-shrink-0">
+        <div class="flex flex-col items-center gap-8 w-full">
+            <div class="text-blue-600 dark:text-blue-400 font-black text-xl tracking-wider">K</div>
+
+            <a href="chat.html" class="text-gray-600 dark:text-gray-200  hover:bg-blue-600 p-2 rounded-full hover:text-white flex items-center justify-center">
+                <ion-icon class="text-2xl" name="chatbox"></ion-icon>
+            </a>
+                
+            <a href="appel.html" class="text-gray-600  hover:bg-blue-600 p-2 rounded-full hover:text-white flex items-center justify-center">
+                <ion-icon class="text-2xl" name="call-outline"></ion-icon>
+            </a> 
+
+            <a href="profil.html" class="text-gray-600  hover:bg-blue-600 p-2 rounded-full hover:text-white flex items-center justify-center">
+                <ion-icon class="text-2xl" name="person-outline"></ion-icon>
+            </a> 
+
+            <a href="#" class="text-gray-600 hover:bg-blue-600 p-2 rounded-full hover:text-white flex items-center justify-center">
+                <ion-icon class="text-2xl" name="archive-outline"></ion-icon>
+            </a>
+
+        </div>
+
+        <a href="profil.html" class="text-gray-600 hover:bg-blue-600 p-2 rounded-full hover:text-white flex items-center justify-center">
+                <ion-icon class="text-2xl" name="settings-outline"></ion-icon>
+        </a>
+    </aside>
+
+    <section id="conversation-list" class="flex flex-col w-full md:flex md:w-80 h-full border-r border-gray-200 dark:border-gray-800 flex-col bg-white dark:bg-gray-900 flex-shrink-0">
+
+        <div class="flex-shrink-0 flex justify-between items-center px-4 pb-3 pt-[calc(env(safe-area-inset-top)+0.75rem)] md:pt-4 border-b border-gray-100 dark:border-gray-800">
+            <div class="flex items-center gap-3">
+                
+                <div class="block md:hidden text-blue-600 font-black text-2xl tracking-wider">
+                    Discussions
+                </div>
+                <div class="hidden md:flex w-10 h-10 bg-blue-600 rounded-full items-center justify-center text-white font-bold">
+                    <img id="avatar" class="w-full h-full object-cover hidden" alt="Avatar"/>
+                    <span id="initials">Ve</span>
+                </div>
+                <div class="hidden md:flex flex-col">
+                    <p id="nom-utilisateur" class="font-semibold text-sm dark:text-white">Alex Rivera</p>
+                    <p class="text-xs text-green-500 flex items-center gap-1">
+                        <span class="w-2 h-2 bg-green-500 rounded-full"></span> Actif
+                    </p>
+                </div>
+            </div>
+
+            <div>
+                <button id="btn-open-menu" class="block md:hidden text-gray-600 text-2xl flex items-center">
+                    <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+                </button>
+                <button class="hidden md:block text-gray-500 hover:text-gray-800 text-xl flex">
+                    <ion-icon name="create-outline"></ion-icon>
+                </button>
+            </div>
+        </div>
+
+        <div class="p-4 relative flex items-center">
+            <ion-icon class="absolute left-7 text-gray-400 text-lg" name="search-outline"></ion-icon>
+            <input id="search-input" type="text" placeholder="Rechercher une discussion..." class="w-full pl-10 pr-4 py-2 bg-gray-100 dark:bg-gray-600 rounded-full text-sm focus:outline-none focus:ring-1 focus:ring-gray-300 dark:text-gray-100">
+        </div>
+
+        <div id="liste-discussions" class="flex-1 min-h-0  px-2 overflow-y-auto touch-pan-y space-y-1 pb-20 md:pb-4">
+            
+            <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-xl cursor-pointer">
+                <div class="w-10 h-10 bg-gray-300 rounded-full flex-shrink-0"></div>
+
+                <div class="overflow-hidden">
+                    <p  class="font-medium text-sm">Sarah Connor</p>
+                    <p class="text-xs text-gray-500 truncate dark:text-gray-400">Hey, that sounds great!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main id="chat-section" class="flex flex-col flex-1 h-dvh bg-gray-50 dark:bg-gray-900">
+        
+        <div class="flex justify-between items-center p-4 border-b border-gray-200 bg-white dark:bg-gray-900">
+            <div class="flex items-center gap-3">
+
+                <button id="btn-back-to-list" class="block md:hidden text-gray-600 text-2xl mr-1 flex items-center">
+                    <ion-icon name="arrow-back-outline"></ion-icon>
+                </button>
+                <div class="w-10 h-10 bg-gray-300 rounded-full"></div>
+                <div>
+                    <p id="chat-nom-utilisateur" class="font-semibold text-sm dark:text-white">Sarah Connor</p>
+                    <p class="text-xs text-green-500">En ligne</p>
+                </div>
+            </div>
+            <div class="flex gap-4 text-gray-500 text-xl items-center">
+                <button id="btn_theme_toggle" class="hover:bg-gray-200 dark:hover:bg-gray-800 p-2 rounded-full flex items-center justify-center transition-colors">
+                    <!-- Icône Lune (affichée en mode clair) -->
+                    <ion-icon id="theme_icon_dark" class="text-2xl text-gray-550 dark:text-gray-400 inline-block" name="moon-outline"></ion-icon>
+                    <!-- Icône Soleil (affichée en mode sombre) -->
+                    <ion-icon id="theme_icon_light" class="text-2xl text-yellow-500 hidden" name="sunny-outline"></ion-icon>
+                </button>
+                <button class="hover:text-gray-800 dark:hover:text-white flex"><ion-icon name="videocam-outline"></ion-icon></button>
+                <button class="hover:text-gray-800 dark:hover:text-white flex"><ion-icon name="call-outline"></ion-icon></button> 
+                <button class="hover:text-gray-800 dark:hover:text-white flex"><ion-icon name="ellipsis-vertical-outline"></ion-icon></button>         
+            </div>
+        </div>
+
+        <div id="chat-container" class="flex-1 p-4 space-y-4 overflow-y-auto pb-[140px]">
+            <div class="max-w-[70%] bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-800 p-3 rounded-2xl rounded-bl-none shadow-sm text-sm mr-auto dark:text-gray-200">
+                <p>Hello 👋</p>
+                <span class="block text-[11px] text-gray-500 text-right block">11:32</span>
+            </div>
+
+            <div class="max-w-[70%] bg-blue-600 text-white p-3 rounded-2xl rounded-br-none shadow-sm text-sm ml-auto">
+                <p>Salut !</p>
+                <span class="block text-[11px] text-white/70 text-right block">11:32</span>
+            </div>
+        </div>
+
+        <div class="fixed bottom-14 p-4 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 flex gap-3 items-center z-40 w-full md:static md:bottom-auto md:left-auto md:right-auto">
+            <button class="text-gray-400 hover:text-gray-600 text-2xl flex">
+                <ion-icon name="add-circle-outline"></ion-icon>
+            </button>
+            <button class="text-gray-400 hover:text-gray-600 text-2xl flex">
+                <ion-icon name="happy-outline"></ion-icon>
+            </button>
+            
+            <form id="message-form" class="flex gap-3 items-center w-full">
+                <input 
+                    id="message-input" type="text" 
+                    placeholder="Écrire un message..." class="flex-1 px-4 py-2.5 bg-gray-100 dark:bg-gray-600 rounded-xl text-sm focus:outline-none dark:text-gray-100">
+
+                <button type="submit" class="bg-blue-600 text-white p-2.5 rounded-full flex items-center justify-center">
+                    <ion-icon name="send-outline"></ion-icon>
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <!-- menu mobile -->
+
+    <nav class="fixed bottom-0 left-0 w-full bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 flex justify-around items-center py-2 pb-[calc(env(safe-area-inset-bottom)+0.5rem)] md:hidden z-50">
+        <a href="chat.html" class="flex flex-col items-center text-gray-600 text-xs">
+            <ion-icon class="text-xl" name="chatbox"></ion-icon>
+            <span>Chats</span>
+        </a>
+        <a href="appel.html" class="flex flex-col items-center text-gray-500 text-xs">
+            <ion-icon class="text-xl" name="call-outline"></ion-icon>
+            <span>Appels</span>
+        </a>
+        <a href="profil.html" class="flex flex-col items-center text-gray-500 text-xs">
+            <ion-icon class="text-xl" name="person-outline"></ion-icon>
+            <span>Profil</span>
+        </a>
+        <a href="profil.html" class="flex flex-col items-center text-gray-500 text-xs">
+            <ion-icon class="text-xl" name="settings-outline"></ion-icon>
+            <span>Paramètre</span>
+        </a>
+    </nav>
+
+    <div id="toast-container" class="toast toast-end toast-bottom z-50"></div>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="js/theme.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
+    <script type="module" src="js/chat.js"></script>
+</body>
+</html>
