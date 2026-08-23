@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kadea-chat - Inscription</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center bg-gray-100 mx-6">
+
+    <!-- Logo -->
+    <div class="mb-6 items-center justify-center flex flex-col">
+        <button class="bg-blue-600 p-4 rounded-lg">
+            <ion-icon class="text-3xl text-white" name="logo-wechat"></ion-icon>
+        </button>
+        <p class="font-bold text-2xl text-blue-600 mt-2">Kadea-chat</p>
+    </div>
+
+    <!-- Card -->
+    <div class="w-full max-w-md bg-white p-6 rounded-2xl shadow-lg">
+
+        <div class="text-center mb-6">
+            <h2 class="text-xl font-bold">Create Account</h2>
+            <p class="text-gray-500 text-sm">Join us and start chatting</p>
+        </div> 
+        
+        <form id="register-form" class="flex flex-col space-y-4">
+            <!-- Fullname -->
+            <div>                    
+                <label class="text-sm font-medium text-gray-700" for="register-fullname">Fullname</label>
+                <div class="relative flex items-center mt-1">
+                    <ion-icon class="absolute pl-3 text-gray-400" name="person-outline"></ion-icon>
+                    <input id="register-fullname" type="text" placeholder="John" class="w-full pl-9 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-blue-50/50">
+                </div>
+            </div>
+                
+            <!-- Email -->
+            <div>
+                <label class="text-sm font-medium text-gray-700" for="register-email">Email</label>
+                <div class="relative flex items-center mt-1">
+                    <ion-icon class="absolute pl-3 text-gray-400" name="mail-outline"></ion-icon>
+                    <input id="register-email" type="email" placeholder="vebe@gmail.com" class="w-full pl-9 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-blue-50/50">
+                </div>
+            </div>
+
+            <!-- Password -->
+            <div>
+                <label class="text-sm font-medium text-gray-700" for="register-password">Password</label>
+                <div class="relative flex items-center mt-1">
+                    <ion-icon class="absolute pl-3 text-gray-400" name="lock-closed-outline"></ion-icon>
+                    <input id="register-password" type="password" placeholder="pass123" class="w-full pl-9 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-blue-50/50">
+                </div>
+            </div>
+
+            <!-- Confirm Password (Correction de l'ID ici) -->
+            <div>
+                <label class="text-sm font-medium text-gray-700" for="register-confirm">Confirm password</label>
+                <div class="relative flex items-center mt-1">
+                    <ion-icon class="absolute pl-3 text-gray-400" name="lock-closed-outline"></ion-icon>
+                    <input id="register-confirm" type="password" placeholder="pass123" class="w-full pl-9 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-blue-50/50">
+                </div>
+            </div>
+            
+            <!-- Zone d'affichage des messages d'erreur -->
+            <p id="error-message" class="text-red-500 text-xs font-medium transition-all"></p>
+
+            <button type="submit" class="w-full bg-blue-600 text-white py-2.5 rounded-lg hover:bg-blue-700 transition font-medium">
+                Create Account →
+            </button>
+
+            <p class="text-xs text-gray-400 text-center mt-2 leading-relaxed">
+                By signing up, you agree to our <a class="text-blue-600 hover:underline" href="#">Terms of Service</a> and <a class="text-blue-600 hover:underline" href="#">Privacy Policy</a> 
+            </p>
+        </form>
+    </div>
+
+    <p class="mt-6 text-sm">
+        <span class="text-gray-500">Already have an account? </span> 
+        <a href="login.html" class="text-blue-600 font-medium hover:underline">Login</a>
+    </p>
+
+    <!-- Ionicons Scripts -->
+    <script type="module" src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.esm.js"></script> 
+    <script nomodule src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.js"></script>  
+    
+    <!-- Lien vers ton fichier JS -->
+        <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/register.js"></script>
+</body>
+</html>
