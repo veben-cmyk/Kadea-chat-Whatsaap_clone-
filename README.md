@@ -8,7 +8,7 @@ Kadea Chat est une application de messagerie moderne, minimaliste et sécurisée
 
 🔗 **[Voir le site en direct](https://veben-cmyk.github.io/Kadea-chat-Whatsaap_clone-/)**
 
-## 🖼️ Aperçu ![Aperçu de Kadea Chat](images/preview.png.)
+## 🖼️ Aperçu ![Aperçu de Kadea Chat](images/preview.png2.png)
 
 ---
 
