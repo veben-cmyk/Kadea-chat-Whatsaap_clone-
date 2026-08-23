@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kadea Chat - Profil</title>
+
+    <!-- ⚡ Bloc d'évitement de flash blanc au chargement -->
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class'
+        }
+    </script>
+    
+</head>
+<body class="h-screen flex text-slate-800 bg-white dark:bg-gray-900 dark:text-gray-200">
+
+    <aside class="hidden md:flex md:w-16 h-full bg-gray-50 dark:bg-gray-900 flex flex-col justify-between items-center py-6 border-r border-gray-200 dark:border-gray-800">
+        <div class="flex flex-col items-center gap-8 w-full">
+            <!-- Logo Kadea (K) -->
+            <div class="text-blue-600 font-black text-xl tracking-wider">K</div>
+
+            <!-- Icône active  -->
+            <a href="chat.html" class="text-gray-600 dark:text-gray-300 hover:bg-blue-600 p-2 rounded-full hover:text-white flex items-center justify-center">
+                <ion-icon class="text-2xl" name="chatbox-outline"></ion-icon>
+            </a>
+                
+            <a href="appel.html" class="text-gray-600 dark:text-gray-300 hover:bg-blue-600 p-2 rounded-full hover:text-white flex items-center justify-center">
+                <ion-icon class="text-2xl" name="call-outline"></ion-icon>
+            </a> 
+
+            <a href="profil.html" class="text-gray-600 dark:text-gray-300 hover:bg-blue-600 p-2 rounded-full hover:text-white flex items-center justify-center">
+                <ion-icon class="text-2xl" name="person-outline"></ion-icon>
+            </a> 
+
+            <a href="archive.html" class="text-gray-600 dark:text-gray-300 hover:bg-blue-600 p-2 rounded-full hover:text-white flex items-center justify-center">
+                <ion-icon class="text-2xl" name="archive-outline"></ion-icon>
+            </a>
+        </div>
+        <a href="profil.html" class="text-gray-600 dark:text-gray-300 hover:bg-blue-600 p-2 rounded-full hover:text-white flex items-center justify-center">
+                <ion-icon class="text-2xl" name="settings-outline"></ion-icon>
+        </a>
+    </aside>
+
+    <div class="flex-1 flex flex-col min-w-0">
+        <header class="flex justify-between items-center p-4 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 transition-colors">
+            <div class="flex items-center gap-3">
+                <a href="chat.html" class="text-gray-600 dark:text-gray-400 text-2xl mr-1 flex items-center hover:text-gray-900 dark:hover:text-white">
+                    <ion-icon name="arrow-back-outline"></ion-icon>
+                </a>
+                <h1 class="font-bold text-lg text-blue-600 dark:text-blue-400">Kadea Chat</h1>
+            </div>
+            
+            <div class="flex items-center gap-4 text-slate-500 dark:text-gray-400">
+                <button id="btn_theme_toggle" class="hover:bg-gray-200 dark:hover:bg-gray-800 p-2 rounded-full flex items-center justify-center transition-colors">
+                    <!-- Icône Lune -->
+                    <ion-icon id="theme_icon_dark" class="text-2xl text-gray-500 dark:text-gray-400" name="moon-outline"></ion-icon>
+                    <!-- Icône Soleil -->
+                    <ion-icon id="theme_icon_light" class="text-2xl text-yellow-500 hidden" name="sunny-outline"></ion-icon>
+                </button>
+                <button class="hover:text-gray-800 dark:hover:text-white flex"><ion-icon name="videocam-outline"></ion-icon></button>
+                <button class="hover:text-gray-800 dark:hover:text-white flex"><ion-icon name="call-outline"></ion-icon></button> 
+                <button class="hover:text-gray-800 dark:hover:text-white flex"><ion-icon name="ellipsis-vertical-outline"></ion-icon></button>
+            </div>
+        </header>
+        <main class="flex-1 overflow-y-auto p-8 flex flex-col items-center border-b border-gray-200 dark:border-gray-800">
+            
+            <div class="flex flex-col items-center text-center mb-8">
+                <div class="relative w-24 h-24 mb-4">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=256" alt="Avatar" class="w-full h-full rounded-full object-cover border-2 border-white shadow-sm">
+                    <span class="absolute bottom-1 right-1 w-5 h-5 bg-green-500 border-4 border-white rounded-full"></span>
+                </div>
+                
+                <h2 id="nom-utilisateur" class="text-xl font-bold text-slate-900 dark:text-white">Alex Rivera</h2>
+                <p id="email-utilisateur" class="text-xs text-slate-400 mt-0.5 dark:text-gray-400">arivera.dev@example.com</p>
+                
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-medium bg-blue-50 text-blue-600 mt-3 border border-blue-100 dark:border-blue-800">
+                    <i class="fa-regular fa-calendar-check"></i> Membre depuis Juin 2026
+                </span>
+            </div>
+
+            <div class="w-full max-w-2xl grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                
+                <div class="bg-white dark:bg-gray-900 border border-slate-200/80 dark:border-gray-700 rounded-2xl p-5 shadow-sm">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-semibold text-sm text-slate-800 dark:text-gray-200">Account Details</h3>
+                        <i class="fa-regular fa-address-card text-slate-400 text-xs"></i>
+                    </div>
+                    <div class="space-y-3.5">
+                        <div>
+                            <span class="block text-[10px] uppercase tracking-wider font-semibold text-slate-400 dark:text-gray-400">Username</span>
+                            <span id="detail-username" class="text-sm font-medium text-slate-700 dark:text-gray-300">arivera_chat</span>
+                        </div>
+                        <div>
+                            <span class="block text-[10px] uppercase tracking-wider font-semibold text-slate-400  dark:text-gray-400 ">Phone</span>
+                            <span class="text-sm font-medium text-slate-700 dark:text-gray-300">+1 (555) 012-3456</span>
+                        </div>
+                        <div>
+                            <span class="block text-[10px] uppercase tracking-wider font-semibold text-slate-400 dark:text-gray-400">Language</span>
+                            <span class="text-sm font-medium text-slate-700 dark:text-gray-300">English (US)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-gray-900 border border-slate-200/80 dark:border-gray-700 rounded-2xl p-5 shadow-sm">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-semibold text-sm text-slate-800 dark:text-gray-200">Privacy & Security</h3>
+                        <i class="fa-solid fa-lock text-slate-400 text-xs"></i>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-shield-halved text-slate-400 text-xs"></i>
+                                <span class="text-xs font-medium text-slate-600 dark:text-gray-400">Two-Factor Auth</span>
+                            </div>
+                            <span class="text-[11px] font-semibold text-blue-600 bg-blue-50 px-2 py-0.5 rounded dark:text-blue-400">Enabled</span>
+                        </div>
+                        <div class="flex items-center justify-between border-t border-slate-100 pt-3 cursor-pointer hover:text-blue-600 transition-colors">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-display text-slate-400 text-xs"></i>
+                                <span class="text-xs font-medium text-slate-600 dark:text-gray-400">Active Sessions</span>
+                            </div>
+                            <i class="fa-solid fa-chevron-right text-slate-300 text-xs"></i>
+                        </div>
+                        <div class="flex items-center justify-between border-t border-slate-100 pt-3 cursor-pointer hover:text-blue-600 transition-colors">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-regular fa-bell text-slate-400 text-xs"></i>
+                                <span class="text-xs font-medium text-slate-600 dark:text-gray-400">Alert Preferences</span>
+                            </div>
+                            <i class="fa-solid fa-chevron-right text-slate-300 text-xs"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="w-full max-w-md flex flex-col gap-3">
+                <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2.5 rounded-xl font-medium text-sm flex items-center justify-center gap-2 transition-colors shadow-sm">
+                    <ion-icon name="create-outline"></ion-icon> Edit Profile
+                </button>
+                <button class="w-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200 py-2.5 rounded-xl font-medium text-sm flex items-center justify-center gap-2 transition-colors">
+                    <ion-icon name="key-outline"></ion-icon> Change Password
+                </button>
+                <button id="profile-logout-btn" class="w-full text-red-500 hover:bg-red-50 dark:hover:bg-red-900/30 border border-transparent hover:border-red-100 py-2.5 rounded-xl font-medium text-sm flex items-center justify-center gap-2 transition-all mt-2">
+                    <ion-icon name="log-out-outline"></ion-icon> Logout
+                </button>
+            </div>
+        </main>
+
+        <footer class="my-6 text-[10px] text-slate-600 dark:text-gray-400 tracking-wide uppercase flex justify-center items-center">
+                Kadea Chat v1.0.0 — Encryption Active
+        </footer>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script> 
+    <script src="js/theme.js"></script>
+    <script src="js/profil.js"></script>
+</body>
+</html>
