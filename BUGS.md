@@ -8,6 +8,8 @@ Légende : ✅ Corrigé · 🟡 Connu, non corrigé · 🔍 En cours d'investiga
 
 ## ✅ Corrigés
 
+*(voir commits `fix/minor-bugs` pour l'implémentation)*
+
 ### 1. Casse incorrecte des initiales (`helpers.js`)
 - **Problème** : `obtenirInitiales("alex rivera")` renvoyait `"aR"` au lieu de `"AR"`.
 - **Cause** : seule la 2ème lettre passait par `.toUpperCase()`, pas la 1ère.
