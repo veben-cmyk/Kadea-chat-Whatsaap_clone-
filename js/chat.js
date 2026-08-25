@@ -40,7 +40,7 @@ let monIdUtilisateur = null; // 🛠️ CORRECTIF : Variable pour stocker mon ID
 
 // barre de recherche 
 let tousLesUtilisateurs = []; //  Boîte pour stocker tous les utilisateurs reçus de l'API
-
+let mesConversations = [];
 
 // ==============================
 // 👤 CHARGER MON PROFIL
@@ -120,6 +120,11 @@ async function chargerUtilisateursWorkspace() {
         //  ON SAUVEGARDE LA LISTE ICI
         tousLesUtilisateurs = autresUtilisateurs;
 
+
+        // On attend que les conversations soient chargées AVANT d'afficher
+        await chargerMesConversations();
+
+
         // afficher les utilisateurs à l'ecran
         afficherUtilisateurs(autresUtilisateurs);
         return autresUtilisateurs;
@@ -128,6 +133,33 @@ async function chargerUtilisateursWorkspace() {
         console.error("Erreur utilisateurs:", erreur);
         return [];
     }
+}
+
+async function chargerMesConversations() {
+    try {
+        const response = await fetch('https://kadea-chat-api.onrender.com/conversations', {
+            method: 'GET',
+            headers: {
+                'x-api-key': API_key,
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        if (!response.ok) throw new Error("Impossible de récupérer les conversations");
+
+        const responseData = await response.json();
+        const apiData = responseData.data || responseData;
+        mesConversations = apiData.conversations || apiData;
+
+    } catch (erreur) {
+        console.error("Erreur conversations:", erreur);
+    }
+}
+
+function trouverConversationAvecUtilisateur(userId) {
+    return mesConversations.find(conv => {
+        return conv.participants.some(p => p.userId === userId);
+    });
 }
 
 
@@ -143,13 +175,22 @@ function afficherUtilisateurs(utilisateurs){
         const div = document.createElement("div");
         div.className = "flex items-center gap-3 p-3 hover:bg-gray-100 rounded-xl cursor-pointer";
 
+        const conv = trouverConversationAvecUtilisateur(user.id);
+const dernierMessage = conv?.messages?.[0];
+const texteApercu = dernierMessage ? dernierMessage.content : "Démarrer une discussion";
+
+// si l'utilisateur n'a pas d'avatar, on affiche ses initiales
+    const avatarHTML = user.avatarUrl
+    ? `<img src="${user.avatarUrl}" class="w-10 h-10 rounded-full flex-shrink-0 object-cover" alt="${user.fullName}">`
+    : `<div class="w-10 h-10 rounded-full flex-shrink-0 bg-blue-600 text-white flex items-center justify-center text-sm font-bold">${obtenirInitiales(user.fullName)}</div>`;
+
         div.innerHTML = `
-            <div class="w-10 h-10 bg-gray-300 rounded-full flex-shrink-0"></div>
-            <div class="overflow-hidden">
-                <p class="font-medium text-sm dark:text-gray-200">${user.fullName}</p>
-                <p class="text-xs text-gray-500 dark:text-gray-400 truncate">Démarrer une discussion</p>
-            </div>
-        `;
+            ${avatarHTML}
+    <div class="overflow-hidden">
+        <p class="font-medium text-sm dark:text-gray-200">${user.fullName}</p>
+        <p class="text-xs text-gray-500 dark:text-gray-400 truncate">${texteApercu}</p>
+    </div>
+`;
 
         div.addEventListener("click", () => {
             // 🛠️ CORRECTIF MOBILE : Masquer la liste et afficher le chat
