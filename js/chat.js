@@ -42,6 +42,15 @@ let monIdUtilisateur = null; // 🛠️ CORRECTIF : Variable pour stocker mon ID
 let tousLesUtilisateurs = []; //  Boîte pour stocker tous les utilisateurs reçus de l'API
 let mesConversations = [];
 
+// les emojis 
+// -----------------------------
+// -----------------------------
+const listeEmojis = ["😀", "😂", "❤️", "👍", "🎉", "🔥", "😢", "🙏"];
+const btnEmoji = document.getElementById("btn-emoji");
+const emojiPicker = document.getElementById("emoji-picker");
+
+
+
 // ==============================
 // 👤 CHARGER MON PROFIL
 // ==============================
@@ -416,6 +425,45 @@ form.addEventListener("submit", async (e) => {
         console.error("Erreur envoi:", error);
     }
 });
+
+// les emojis
+// -----------------------------
+// -----------------------------
+// ==============================
+// 🙂 EMOJIS
+// ==============================
+
+function afficherEmojis() {
+    emojiPicker.innerHTML = ""; // on vide au cas où
+    emojiPicker.className = "absolute bottom-20 left-4 hidden z-50 grid grid-cols-4 gap-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-3 rounded-xl shadow-lg";
+
+    listeEmojis.forEach(emoji => {
+        const btn = document.createElement("button");
+        btn.type = "button"; // important : sinon ça soumet le formulaire !
+        btn.textContent = emoji;
+        btn.className = "text-2xl hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg p-1";
+
+        btn.addEventListener("click", () => {
+            insererEmoji(emoji);
+        });
+
+        emojiPicker.appendChild(btn);
+    });
+}
+
+afficherEmojis();
+
+btnEmoji.addEventListener("click", () => {
+    emojiPicker.classList.toggle("hidden");
+});
+
+function insererEmoji(emoji) {
+    messageInput.value += emoji;
+    messageInput.focus();
+}
+// --------------------------------
+// ------------------------------ afficher les emojis dans le caht
+
 
 // ==============================
 //  RECHERCHER UN COLLÈGUE

@@ -133,9 +133,14 @@
             <button class="text-gray-400 hover:text-gray-600 text-2xl flex">
                 <ion-icon name="add-circle-outline"></ion-icon>
             </button>
-            <button class="text-gray-400 hover:text-gray-600 text-2xl flex">
+            
+            <!-- les emojis 
+                1.j'ajoute un id et je crée le conteneur div avec un id aussi  -->
+            <button id="btn-emoji" class="text-gray-400 hover:text-gray-600 text-2xl flex">
                 <ion-icon name="happy-outline"></ion-icon>
             </button>
+
+            <div id="emoji-picker" class="absolute bottom-20 left-4 hidden z-50"></div> 
             
             <form id="message-form" class="flex gap-3 items-center w-full">
                 <input 
